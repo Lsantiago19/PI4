@@ -23,20 +23,28 @@ public class GetProduto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         int id = Integer.parseInt(request.getParameter("id"));
 
         Produto p = ProdutoDAO.getProduto(id);
         request.setAttribute("produto", p);
-        
-        if(p.isStatus()){
+
+        if (p.isStatus()) {
             request.setAttribute("status", "Ativo");
-        } else{
+        } else {
             request.setAttribute("status", "Inativo");
         }
 
-        RequestDispatcher rd = getServletContext()
-                .getRequestDispatcher("/InfoProduto.jsp");
-        rd.forward(request, response);
+        boolean ver = Boolean.valueOf(request.getParameter("ver"));
+
+        if (!ver) {
+            RequestDispatcher rd = getServletContext()
+                    .getRequestDispatcher("/AlterarProduto.jsp");
+            rd.forward(request, response);
+        } else{
+            RequestDispatcher rd = getServletContext()
+                    .getRequestDispatcher("/VerProduto.jsp");
+            rd.forward(request, response);
+        }
     }
 }

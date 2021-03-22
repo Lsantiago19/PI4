@@ -8,6 +8,7 @@ package Servlet;
 import DAOs.ImagemDAO;
 import DAOs.ProdutoDAO;
 import Utils.DiskFileItemFactory;
+import Utils.ManipulaImagem;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -93,7 +94,8 @@ public class PostProdutos extends HttpServlet {
         String filepath = request.getParameter("filename"); // puxa o diretorio do arquivo do user
         System.out.println("TESTE " + filepath);
 
-        if (filepath != null) { //                try(PrintWriter out = response.getWriter()){
+        if (filepath != null) { 
+//                try(PrintWriter out = response.getWriter()){
 //                    Part part = request.getPart("filename");
 //                    String filename = part.getSubmittedFileName();
 //                    System.out.println("TESTE293840 " + filename);
@@ -101,7 +103,13 @@ public class PostProdutos extends HttpServlet {
 
 //                System.out.println(filepath + " aaaa " + "meudeus" + " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             String arquivo = idprod + "_" + idimg; // cria nome pro arquivo do sistema
+            
+            /*AVISO - PASTA PODE MUDAR DEPENDENDO DE ONDE ESTÁ O SEU PROJETO NO SEU PC
+                AO TESTAR COM OUTRO LOCAL DE ARQUIVO, NÃO APAGUE ESSA PATH, DEIXE COMENTADO!
+            */
             path = "D:\\Downloads\\PI4\\src\\main\\java\\Imagens\\" + arquivo + ".jpg"; // pasta escolhida pras imagens
+            
+            
             int wid = 1440;
             int hei = 1080;
             File f = new File(path);
@@ -136,10 +144,5 @@ public class PostProdutos extends HttpServlet {
             Logger.getLogger(PostProdutos.class.getName()).log(Level.SEVERE, null, ex);
             //Utils.Erro(ex, request, response);
         }
-    }
-
-    protected void SAVEIMAGE(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
     }
 }

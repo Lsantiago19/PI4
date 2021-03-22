@@ -1,12 +1,29 @@
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none !important;
+}
 h1{
     font-family: 'Nunito', sans-serif;
 }
-p{
+.p_form{
     font-family: 'Nunito', sans-serif;
     font-weight: bold;
     font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
-a {
+.custom_h2{
+    padding: 0 5px 0 5px;
+    font-family: 'Josefin Slab', sans-serif;
+}
+.input_form{
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-family: 'Arvo', serif;
+}
+.linkhover {
     color: #000;
     text-transform: uppercase;
     text-decoration: none;
@@ -16,7 +33,7 @@ a {
     padding: 5px 5px;
     position: relative;
 }
-a:after {    
+.linkhover:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -28,7 +45,7 @@ a:after {
     transition: width 0.2s ease 0s, left 0.2s ease 0s;
     width: 0;
 }
-a:hover:after { 
+.linkhover:hover:after { 
     width: 100%; 
     left: 0; 
 }
@@ -54,7 +71,6 @@ a:hover:after {
     background: #eee
 }
 
-
 /*CSS APENAS DO SLIDER*/
 
 .switch {
@@ -72,8 +88,8 @@ a:hover:after {
 }
 .switch--shadow + label {
     padding: 2px;
-    width: 40px;
-    height: 20px;
+    width: 60px;
+    height: 26px;
     background-color: #dddddd;
     border-radius: 60px;
 }
@@ -93,7 +109,7 @@ a:hover:after {
     transition: all 0.2s;
 }
 .switch--shadow + label:after {
-    width: 20px;
+    width: 24px;
     background-color: #fff;
     border-radius: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -103,7 +119,7 @@ a:hover:after {
     background-color: #8ce196;
 }
 .switch--shadow:checked + label:after {
-    transform: translateX(22px);
+    transform: translateX(34px);
 }
 
 /*FIM CSS APENAS DO SLIDER*/

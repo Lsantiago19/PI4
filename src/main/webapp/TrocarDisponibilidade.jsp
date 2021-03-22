@@ -1,13 +1,10 @@
 <%-- 
-    Document   : InfoProduto
-    Created on : 07/03/2021, 16:38:07
+    Document   : TrocarDisponibilidade
+    Created on : 13/03/2021, 18:38:28
     Author     : Gabriel
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,17 +18,12 @@
         <link href="padrao.css" rel="stylesheet">
         <link href="CadProd.css" rel="stylesheet">
     </head>
-
     <body>
-        <form action="AlterarProduto" method="POST">
+        <form action="ToggleProduto" method="POST">
             <input class="input_form" name="id" value="${produto.id}" hidden>
             <p class="p_form">Nome Produto</p>
-            <input class="input_form" name="nomeproduto" value="${produto.nomeproduto}">
-            <p class="p_form">Nome em Extenso</p>
-            <input class="input_form" name="nomeextenso" value="${produto.nomeextenso}">
-            <p class="p_form">Estrelas</p>
-            <input class="input_form" name="estrelas" value="${produto.estrelas}">
-            <p>Ativo/Inativo</p>
+            <h1>${produto.nomeproduto}</h1>
+            <p>Status</p>
             <%
 
                 Object p = request.getAttribute("status");
@@ -44,10 +36,6 @@
                 }
 
             %>
-            <p class="p_form">Quantidade</p>
-            <input class="input_form" name="qtd" value="${produto.quantidade}">
-            <p class="p_form">preço</p>
-            <input class="input_form" name="preco" value="${produto.preco}">
             <button type="submit" class="submit">Alterar</button>
         </form>
     </body>

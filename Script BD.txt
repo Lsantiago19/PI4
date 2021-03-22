@@ -7,3 +7,9 @@ status boolean,
 quantidade int,
 preco double
 );
+
+create table imagens(
+id int primary key generated always as identity,
+dir varchar(2000),
+idproduto int
+);

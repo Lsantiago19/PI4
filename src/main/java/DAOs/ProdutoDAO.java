@@ -163,6 +163,25 @@ public class ProdutoDAO {
             PreparedStatement ps = con.prepareStatement(query);
             ps.execute();
         }
-
     }
+    
+    public static void toggleProduto(Produto p) throws ClassNotFoundException, SQLException {
+        Connection con = ConexaoBD.getConexao();
+
+        String query = "update produto set status = ? where id = ?";
+
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(query);
+            
+            ps.setBoolean(1, p.isStatus());
+            ps.setInt(2, p.getId());
+
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 }

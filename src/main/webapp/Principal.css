@@ -1,0 +1,14 @@
+.card-body{
+    background-color: #eee !important;
+    margin-bottom: 20px;
+    transition-duration: 0.2s;
+}
+.card-body:hover{
+   -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+  box-shadow: 2px 2px 15px #555;
+}
+.card-body > h5, p{
+    font-family: 'Arvo', sans-serif;
+}
