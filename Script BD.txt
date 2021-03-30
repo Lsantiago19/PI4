@@ -13,3 +13,16 @@ id int primary key generated always as identity,
 dir varchar(2000),
 idproduto int
 );
+
+create table usuario(
+id int primary key generated always as identity,
+nome varchar(280),
+senha varchar(1000),
+status boolean,
+tipocadastro int
+);
+
+create table tipocadastro(
+id int primary key generated always as identity,
+descricao varchar(200)
+);

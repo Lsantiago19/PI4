@@ -27,8 +27,8 @@
                             </figure>
                         </div>
                         <div class="infos">
-                            <h3 class="" id="nomeProduto"><strong>${produto.nomeproduto}</strong></h3>
-                            <p class="" id="nomeExtenso">${produto.nomeextenso}</p>
+                            <h3 id="nomeProduto"><strong>${produto.nomeproduto}</strong></h3>
+                            <p id="nomeExtenso">${produto.nomeextenso}</p>
                         </div>
                     </div>
                     <div class="col-md-12"> 

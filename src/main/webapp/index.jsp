@@ -14,7 +14,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=K2D:wght@700&display=swap" rel="stylesheet">
         
-        <link href="padrao.css" rel="stylesheet">
     </head>
     <body>
         <jsp:forward page="Principal"></jsp:forward>

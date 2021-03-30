@@ -8,8 +8,8 @@ package Servlet;
 import DAOs.ProdutoDAO;
 import Entidades.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,24 +23,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author Gabriel
  */
 public class ToggleProduto extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        int id = Integer.parseInt(request.getParameter("id"));
-
-        Produto p = ProdutoDAO.getProduto(id);
-        request.setAttribute("produto", p);
-        
-        if(p.isStatus()){
-            request.setAttribute("status", "Ativo");
-        } else{
-            request.setAttribute("status", "Inativo");
-        }
 
         RequestDispatcher rd = getServletContext()
-                .getRequestDispatcher("/TrocarDisponibilidade.jsp");
+                .getRequestDispatcher("GetProdutos");
         rd.forward(request, response);
     }
     
@@ -50,19 +39,18 @@ public class ToggleProduto extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
         String status = request.getParameter("status");
-        boolean stat = true;
-        if (status == null) {
-            stat = false;
+        boolean stat = false;
+        if (status.equals("false")) {
+            stat = true;
         }
         Produto p = new Produto();
         p.setId(id);
         p.setStatus(stat);
         try {
             ProdutoDAO.toggleProduto(p);
-
+            response.sendRedirect("GetProdutos");
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(PostProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

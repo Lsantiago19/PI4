@@ -11,9 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Produtos Cadastrados</title>
 
-        <link href="padrao.css" rel="stylesheet">
     </head>
 
 
@@ -39,9 +38,15 @@
 
                         <td>${produtos.quantidade}</td>
                         <td>R$ ${produtos.preco}</td>
-                        <td><a class="editar" href="GetProduto?id=${produtos.id}&ver=true">Visualizar</a></td>
+                        <td><a class="editar" href="ProdutoSelecionado?id=${produtos.id}&editar=true">Visualizar</a></td>
                         <td><a class="editar" href="GetProduto?id=${produtos.id}&editar=true">Editar</a></td>
-                        <td><a class="editar" href="ToggleProduto?id=${produtos.id}">Alterar Status</a></td>
+                        <td>
+                            <form action="ToggleProduto" method="POST">
+                                <input type="hidden" name="id" value="${produtos.id}" />
+                                <input type="hidden" name="status" value="${produtos.status}" />
+                                <button class="editar">Alterar Status</button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

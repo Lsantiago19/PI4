@@ -26,10 +26,6 @@
         <servlet-class>Servlet.DeleteProduto</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ToggleProduto</servlet-name>
-        <servlet-class>Servlet.ToggleProduto</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Principal</servlet-name>
         <servlet-class>Servlet.Principal</servlet-class>
     </servlet>
@@ -40,6 +36,18 @@
     <servlet>
         <servlet-name>UploadImagens</servlet-name>
         <servlet-class>Servlet.UploadImagens</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ToggleProduto</servlet-name>
+        <servlet-class>Servlet.ToggleProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarUsuario</servlet-name>
+        <servlet-class>Servlet.CadastrarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetUsuarios</servlet-name>
+        <servlet-class>Servlet.GetUsuarios</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetProdutos</servlet-name>
@@ -62,10 +70,6 @@
         <url-pattern>/DeleteProduto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ToggleProduto</servlet-name>
-        <url-pattern>/ToggleProduto</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Principal</servlet-name>
         <url-pattern>/Principal</url-pattern>
     </servlet-mapping>
@@ -79,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>UploadImagens</servlet-name>
         <url-pattern>/UploadImagens</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ToggleProduto</servlet-name>
+        <url-pattern>/ToggleProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarUsuario</servlet-name>
+        <url-pattern>/CadastrarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetUsuarios</servlet-name>
+        <url-pattern>/GetUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -7,13 +7,13 @@ package Servlet;
 
 import DAOs.ImagemDAO;
 import DAOs.ProdutoDAO;
-import Entidades.Produto;
+import DAOs.UsuarioDAO;
+import Entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,29 +23,30 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gabriel
  */
-public class AlterarProduto extends HttpServlet {
+public class CadastrarUsuario extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
-        String nomeprod = request.getParameter("nomeproduto");
-        String nomeext = request.getParameter("nomeextenso");
-        int estrelas = Integer.parseInt(request.getParameter("estrelas"));
+        String nome = request.getParameter("nome");
+        String senha = request.getParameter("senha");
         String status = request.getParameter("status");
+        int tipocad = Integer.parseInt(request.getParameter("tipocad"));
+        
         boolean stat = true;
-
         if (status == null) {
             stat = false;
         }
 
-        int quantidade = Integer.parseInt(request.getParameter("qtd"));
-        double preco = Double.parseDouble(request.getParameter("preco"));
-        Produto p = new Produto(id, nomeprod, nomeext, estrelas, stat, quantidade, preco);
+        Usuario u = new Usuario();
+        u.setNome(nome);
+        u.setSenha(senha);
+        u.setStatus(stat);
+        u.setTipoCadastro(tipocad);
+        
         try {
-            ProdutoDAO.updateProduto(p);
-            response.sendRedirect("GetProdutos?sucesso=true");
+            UsuarioDAO.cadUsuario(u);
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(PostProdutos.class.getName()).log(Level.SEVERE, null, ex);

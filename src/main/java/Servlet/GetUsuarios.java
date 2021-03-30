@@ -1,7 +1,7 @@
 package Servlet;
 
-import DAOs.ProdutoDAO;
-import Entidades.Produto;
+import DAOs.UsuarioDAO;
+import Entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,18 +15,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Bruno
  */
-public class Principal extends HttpServlet {
- 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        List<Produto> produtos = ProdutoDAO.getClienteProdutos();
-        request.setAttribute("GetProdutos", produtos);
-        
-        RequestDispatcher rd = getServletContext()
-                .getRequestDispatcher("/Principal.jsp");
-        rd.forward(request, response);
-    }
+public class GetUsuarios extends HttpServlet {
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        List<Usuario> usuarios = UsuarioDAO.getUsuario();
+        request.setAttribute("GetUsuarios", usuarios);
+
+        RequestDispatcher rd = getServletContext()
+                .getRequestDispatcher("/ListarUsuarios.jsp");
+        rd.forward(request, response);
+        
+    }
 }

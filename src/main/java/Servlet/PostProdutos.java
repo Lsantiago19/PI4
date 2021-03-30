@@ -44,18 +44,6 @@ public class PostProdutos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        String path = request.getServletContext().getRealPath("img") + File.separator;
-//        
-//        File files = new File(path);
-//        response.setContentType("image/jpeg");
-//        
-//        for(String file : files.list()){
-//            File f = new File(path + file);
-//            BufferedImage bi = ImageIO.read(f);
-//            OutputStream out = response.getOutputStream();
-//            ImageIO.write(bi, "jpg", out);
-//            out.close();
-//        }
         int idprod = 0;
         int idimg = 0;
         try {
@@ -76,50 +64,12 @@ public class PostProdutos extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        if(ServletFileUpload.isMultipartContent(request)){
-//            try{
-//                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-//                
-//                for(FileItem item : multiparts){
-//                    if(!item.isFormField()){
-//                        item.write(new File(request.getServletContext().getRealPath("img") + File.separator + "uploadfile"));
-//                    }
-//                }
-//            }
-//        }
         int idprod = Integer.parseInt(request.getParameter("idprod"));
         int idimg = Integer.parseInt(request.getParameter("idimagem"));
         boolean addImg = false;
         String path = "";
         String filepath = request.getParameter("filename"); // puxa o diretorio do arquivo do user
         System.out.println("TESTE " + filepath);
-
-        if (filepath != null) { 
-//                try(PrintWriter out = response.getWriter()){
-//                    Part part = request.getPart("filename");
-//                    String filename = part.getSubmittedFileName();
-//                    System.out.println("TESTE293840 " + filename);
-//                }
-
-//                System.out.println(filepath + " aaaa " + "meudeus" + " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            String arquivo = idprod + "_" + idimg; // cria nome pro arquivo do sistema
-            
-            /*AVISO - PASTA PODE MUDAR DEPENDENDO DE ONDE ESTÁ O SEU PROJETO NO SEU PC
-                AO TESTAR COM OUTRO LOCAL DE ARQUIVO, NÃO APAGUE ESSA PATH, DEIXE COMENTADO!
-            */
-            path = "D:\\Downloads\\PI4\\src\\main\\java\\Imagens\\" + arquivo + ".jpg"; // pasta escolhida pras imagens
-            
-            
-            int wid = 1440;
-            int hei = 1080;
-            File f = new File(path);
-            File oldfile = new File(filepath);
-            BufferedImage image = null;
-//                image = new BufferedImage(wid, hei, BufferedImage.TYPE_INT_ARGB);
-//                image = ImageIO.read(oldfile); // le a imagem escolhida pelo user
-//                ImageIO.write(image, "jpg", f); // salva a imagem na pasta escolhida
-//                addImg = true;
-        }
 
         String nomeprod = request.getParameter("nomeproduto");
         String nomeext = request.getParameter("nomeextenso");

@@ -15,7 +15,6 @@
         <link href="https://fonts.googleapis.com/css2?family=K2D:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@500&display=swap" rel="stylesheet">
 
-        <link href="padrao.css" rel="stylesheet">
         <link href="CadProd.css" rel="stylesheet">
     </head>
 

@@ -23,6 +23,39 @@ import java.util.logging.Logger;
  */
 public class ProdutoDAO {
 
+    public static List<Produto> getClienteProdutos() {
+
+        List<Produto> produtos = new ArrayList();
+        int id = 0;
+        String nomeproduto = "";
+        String nomeextenso = "";
+        int estrelas = 0;
+        boolean status = false;
+        int quantidade = 0;
+        double preco = 0;
+        try {
+            String query = "select * from produto where status = true";
+            Connection con = ConexaoBD.getConexao();
+
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("id");
+                nomeproduto = rs.getString("nomeproduto");
+                nomeextenso = rs.getString("nomeextenso");
+                estrelas = rs.getInt("estrelas");
+                status = rs.getBoolean("status");
+                quantidade = rs.getInt("quantidade");
+                preco = rs.getDouble("preco");
+                produtos.add(new Produto(id, nomeproduto, nomeextenso, estrelas, status, quantidade, preco));
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produtos;
+    }
+
     public static List<Produto> getProdutos() {
 
         List<Produto> produtos = new ArrayList();
@@ -151,7 +184,7 @@ public class ProdutoDAO {
     public static void deleteProduto(int id) throws ClassNotFoundException, SQLException {
         Connection con = ConexaoBD.getConexao();
         String query = "";
-        
+
         if (id > 0) {
             query = "delete from produto where id = ?";
             PreparedStatement ps = con.prepareStatement(query);
@@ -164,16 +197,16 @@ public class ProdutoDAO {
             ps.execute();
         }
     }
-    
+
     public static void toggleProduto(Produto p) throws ClassNotFoundException, SQLException {
         Connection con = ConexaoBD.getConexao();
 
-        String query = "update produto set status = ? where id = ?";
+        String query = "UPDATE produto set status = ? where id = ?";
 
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(query);
-            
+
             ps.setBoolean(1, p.isStatus());
             ps.setInt(2, p.getId());
 
@@ -182,6 +215,5 @@ public class ProdutoDAO {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
 }
